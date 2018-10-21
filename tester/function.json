@@ -15,6 +15,13 @@
       "type": "http",
       "direction": "out",
       "name": "res"
+    },
+    {
+      "type": "token",
+      "name": "graphToken",
+      "resource": "https://graph.microsoft.com",
+      "identity": "UserFromRequest",
+      "direction": "in"
     }
   ]
 }
