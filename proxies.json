@@ -1,4 +1,36 @@
 {
   "$schema": "http://json.schemastore.org/proxies",
-  "proxies": {}
+  "proxies": {
+      "api": {
+          "matchCondition": {
+              "route": "/api/{api-path}",
+              "methods": [
+                  "GET",
+                  "POST"
+              ]
+          },
+          "backendUri": "https://%WEBSITE_SITE_NAME%.azurewebsites.net/api/{api-path}",
+          "debug":false
+      },
+      "filename": {
+          "matchCondition": {
+              "route": "/{*file-path}",
+              "methods": [
+                  "GET"
+              ]
+          },
+          "backendUri": "https://%WEBSITE_SITE_NAME%.azurewebsites.net/api/pub?file={file-path}",
+          "debug":false
+      },
+      "default": {
+          "matchCondition": {
+              "route": "/",
+              "methods": [
+                  "GET"
+              ]
+          },
+          "backendUri": "https://%WEBSITE_SITE_NAME%.azurewebsites.net/api/pub/?file=index.html",
+          "debug":false
+      }
+  }
 }
